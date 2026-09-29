@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ink & Steel Studio | Premium Tattoo &amp; Piercing</title>
+  <meta name="description" content="Ink & Steel — a premium tattoo and piercing studio. Book appointments, browse our gallery, and pre-order aftercare products.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Custom Theme Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top studio-navbar" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand studio-brand" href="#hero">
+        <i class="bi bi-magnet-fill brand-icon"></i> INK<span class="text-accent">&amp;</span>STEEL
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#shop">Aftercare Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-accent btn-sm px-3 js-book-appointment-cta" href="#booking">Book Appointment</a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <button class="btn btn-outline-accent btn-sm px-3 position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+              <i class="bi bi-bag"></i> Cart
+              <span class="badge rounded-pill bg-accent text-dark cart-badge" id="navCartCount">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO SECTION ============ -->
+  <header class="hero-section d-flex align-items-center" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <p class="hero-eyebrow text-accent text-uppercase mb-3"><i class="bi bi-stars"></i> Est. Craftsmanship &mdash; Sterile &amp; Certified</p>
+          <h1 class="hero-title mb-4">Where Art Meets <span class="text-accent">Skin.</span><br>Precision Piercing &amp; Custom Ink.</h1>
+          <p class="hero-subtitle mb-4">Award-winning artists specializing in Realism, Traditional &amp; Fine Line tattoos, plus safe, professional body piercing — in-studio or at your home.</p>
+          <div class="d-flex flex-wrap gap-3 mb-5">
+            <a href="#booking" class="btn btn-accent btn-lg px-4 fw-semibold js-book-appointment-cta">
+              <i class="bi bi-calendar2-check"></i> Book Appointment
+            </a>
+            <a href="#gallery" class="btn btn-outline-light btn-lg px-4">
+              <i class="bi bi-images"></i> View Gallery
+            </a>
+          </div>
+
+          <div class="row g-3 hero-hours">
+            <div class="col-sm-4">
+              <div class="hero-info-card">
+                <i class="bi bi-clock-history text-accent fs-4"></i>
+                <div>
+                  <h6 class="mb-0">Mon &ndash; Sat</h6>
+                  <small class="text-muted">11:00 AM &ndash; 8:00 PM</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="hero-info-card">
+                <i class="bi bi-geo-alt text-accent fs-4"></i>
+                <div>
+                  <h6 class="mb-0">Studio City</h6>
+                  <small class="text-muted">In-studio appointments</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="hero-info-card">
+                <i class="bi bi-house-heart text-accent fs-4"></i>
+                <div>
+                  <h6 class="mb-0">Home Service</h6>
+                  <small class="text-muted">Available &amp; recommended</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HOME SERVICE BANNER ============ -->
+  <section class="home-service-banner">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-1 text-center">
+          <i class="bi bi-house-heart-fill fs-1 text-accent"></i>
+        </div>
+        <div class="col-lg-8">
+          <h5 class="mb-1">Home Services Recommended</h5>
+          <p class="mb-0 text-muted">Enjoy the same certified, sterile experience from the comfort of your home — faster booking, zero travel, and full privacy. Select "Home Visit" in the booking wizard below.</p>
+        </div>
+        <div class="col-lg-3 text-lg-end">
+          <a href="#booking" class="btn btn-accent js-book-appointment-cta">Request Home Visit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES & PRICING ============ -->
+  <section id="services" class="section-padding">
+    <div class="container">
+      <div class="section-heading text-center mb-5">
+        <p class="text-accent text-uppercase small fw-semibold mb-1">Our Craft</p>
+        <h2 class="fw-bold">Services &amp; Pricing</h2>
+        <p class="text-muted">Transparent, session-based pricing. Final quotes confirmed during consultation.</p>
+      </div>
+
+      <!-- Bootstrap Pills for Tattoo vs Piercing -->
+      <ul class="nav nav-pills justify-content-center mb-5 studio-pills" id="servicesTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="tattoo-tab" data-bs-toggle="pill" data-bs-target="#tattoo-pane" type="button" role="tab" aria-selected="true">
+            <i class="bi bi-brush"></i> Tattoo Styles
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="piercing-tab" data-bs-toggle="pill" data-bs-target="#piercing-pane" type="button" role="tab" aria-selected="false">
+            <i class="bi bi-gem"></i> Piercing Options
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="servicesTabContent">
+        <!-- Tattoo Styles: populated by JS from APP_DATA.tattooStyles -->
+        <div class="tab-pane fade show active" id="tattoo-pane" role="tabpanel">
+          <div class="row g-4" id="tattooPricingGrid"></div>
+        </div>
+        <!-- Piercing Options: populated by JS from APP_DATA.piercingOptions -->
+        <div class="tab-pane fade" id="piercing-pane" role="tabpanel">
+          <div class="row g-4" id="piercingPricingGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY / PORTFOLIO ============ -->
+  <section id="gallery" class="section-padding bg-darker">
+    <div class="container">
+      <div class="section-heading text-center mb-5">
+        <p class="text-accent text-uppercase small fw-semibold mb-1">Portfolio</p>
+        <h2 class="fw-bold">Recent Work</h2>
+        <p class="text-muted">A glimpse into our studio's craftsmanship. Swap in your own high-res photography anytime.</p>
+      </div>
+      <!--
+        HOW TO ADD MORE PHOTOS (HTML/CSS only, no JS needed):
+        1. Copy one ".masonry-item" block below (from <div class="masonry-item"> to its closing </div>).
+        2. Paste it anywhere inside the ".masonry-grid" container.
+        3. Change the "src" to your image URL (or a local file path like "images/my-photo.jpg").
+        4. Change the "alt" text, the <h6> title, and the <small> tag/category text.
+        To remove a photo, just delete its whole ".masonry-item" block.
+      -->
+      <div class="masonry-grid" id="galleryGrid">
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=700&q=80" alt="Realism Portrait Sleeve" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Realism Portrait Sleeve</h6>
+            <small>Tattoo &middot; Realism</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&w=700&q=80" alt="Traditional Eagle Chest Piece" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Traditional Eagle Chest Piece</h6>
+            <small>Tattoo &middot; Traditional</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=700&q=80" alt="Fine Line Botanical Forearm" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Fine Line Botanical Forearm</h6>
+            <small>Tattoo &middot; Fine Line</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=700&q=80" alt="Blackwork Geometric Sleeve" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Blackwork Geometric Sleeve</h6>
+            <small>Tattoo &middot; Blackwork</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1601049676869-702ea24cfd58?auto=format&fit=crop&w=700&q=80" alt="Curated Ear Stack" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Curated Ear Stack</h6>
+            <small>Piercing &middot; Cartilage</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=700&q=80" alt="Septum & Nose Combo" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Septum &amp; Nose Combo</h6>
+            <small>Piercing &middot; Septum</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1618886614638-80e3c103d31a?auto=format&fit=crop&w=700&q=80" alt="Studio Session in Progress" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Studio Session in Progress</h6>
+            <small>Behind the Scenes</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=700&q=80" alt="Minimalist Line Work" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Minimalist Line Work</h6>
+            <small>Tattoo &middot; Fine Line</small>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=700&q=80" alt="Bold Traditional Rose" loading="lazy">
+          <div class="masonry-caption">
+            <h6>Bold Traditional Rose</h6>
+            <small>Tattoo &middot; Traditional</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AFTERCARE PRODUCT SHOP ============ -->
+  <section id="shop" class="section-padding">
+    <div class="container">
+      <div class="section-heading text-center mb-5">
+        <p class="text-accent text-uppercase small fw-semibold mb-1">Aftercare Shop</p>
+        <h2 class="fw-bold">Pre-Order Aftercare Products</h2>
+        <p class="text-muted">Add products to your cart now and pick them up (or have them delivered) with your appointment.</p>
+      </div>
+      <!-- Shop cards, populated by JS from APP_DATA.products -->
+      <div class="row g-4" id="shopGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING & CHECKOUT ============ -->
+  <section id="booking" class="section-padding bg-darker">
+    <div class="container">
+      <div class="section-heading text-center mb-5">
+        <p class="text-accent text-uppercase small fw-semibold mb-1">Reserve Your Session</p>
+        <h2 class="fw-bold">Booking &amp; Pre-Order Checkout</h2>
+        <p class="text-muted">Secure your slot with a 25% deposit, or skip straight to paying for aftercare products.</p>
+      </div>
+
+      <!-- Checkout mode toggle: lets shop-only customers skip the booking fields entirely -->
+      <div class="d-flex justify-content-center mb-5">
+        <div class="btn-group checkout-mode-toggle" role="group" aria-label="Checkout type">
+          <input type="radio" class="btn-check" name="checkoutMode" id="modeBooking" checked>
+          <label class="btn btn-outline-accent px-4" for="modeBooking"><i class="bi bi-calendar2-check"></i> Book an Appointment</label>
+
+          <input type="radio" class="btn-check" name="checkoutMode" id="modeShopOnly">
+          <label class="btn btn-outline-accent px-4" for="modeShopOnly"><i class="bi bi-bag-check"></i> Aftercare Shop Only</label>
+        </div>
+      </div>
+
+      <form id="bookingForm" class="needs-validation" novalidate>
+        <div class="row g-4">
+
+          <!-- LEFT: Booking Details -->
+          <div class="col-lg-7">
+            <div class="studio-card p-4 mb-4" id="serviceArtistCard">
+              <h5 class="card-title-accent mb-4"><i class="bi bi-1-circle-fill text-accent"></i> Service &amp; Artist</h5>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="serviceCategory" class="form-label">Category</label>
+                  <select class="form-select studio-input" id="serviceCategory" required>
+                    <option value="" selected disabled>Choose category…</option>
+                    <option value="tattoo">Tattoo</option>
+                    <option value="piercing">Piercing</option>
+                  </select>
+                  <div class="invalid-feedback">Please select a category.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="serviceSelect" class="form-label">Service / Style</label>
+                  <select class="form-select studio-input" id="serviceSelect" required disabled>
+                    <option value="" selected disabled>Select category first…</option>
+                  </select>
+                  <div class="invalid-feedback">Please select a service.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="artistSelect" class="form-label">Preferred Artist</label>
+                  <select class="form-select studio-input" id="artistSelect" required>
+                    <option value="" selected disabled>Choose artist…</option>
+                  </select>
+                  <div class="invalid-feedback">Please select an artist.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="locationType" class="form-label">Location</label>
+                  <select class="form-select studio-input" id="locationType" required>
+                    <option value="studio" selected>In-Studio Visit</option>
+                    <option value="home">Home Visit (Recommended)</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="appointmentDate" class="form-label">Preferred Date</label>
+                  <input type="date" class="form-control studio-input" id="appointmentDate" required>
+                  <div class="invalid-feedback">Please choose a date.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="appointmentTime" class="form-label">Preferred Time</label>
+                  <select class="form-select studio-input" id="appointmentTime" required>
+                    <option value="" selected disabled>Select time slot…</option>
+                  </select>
+                  <div class="invalid-feedback">Please choose a time slot.</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="designNotes" class="form-label">Design Description / Placement Notes</label>
+                  <textarea class="form-control studio-input" id="designNotes" rows="3" placeholder="Describe your desired design, size, and placement…" required></textarea>
+                  <div class="invalid-feedback">Please add a short description.</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="referenceUpload" class="form-label">Reference Image Upload <span class="text-muted">(optional)</span></label>
+                  <input class="form-control studio-input" type="file" id="referenceUpload" accept="image/*">
+                  <div class="form-text text-muted">JPG or PNG, max 10MB. Helps your artist prep your custom design.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-card p-4 mb-4">
+              <h5 class="card-title-accent mb-4"><i class="bi bi-2-circle-fill text-accent"></i> Your Details</h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="clientName" class="form-label">Full Name</label>
+                  <input type="text" class="form-control studio-input" id="clientName" required>
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="clientEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control studio-input" id="clientEmail" placeholder="you@example.com" required>
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="clientPhone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control studio-input" id="clientPhone" pattern="^[0-9+\-\s()]{7,20}$" placeholder="+1 (555) 123-4567" required>
+                  <div class="invalid-feedback">Please enter a valid phone number.</div>
+                </div>
+                <div class="col-md-6" id="dobFieldCol">
+                  <label for="clientAge" class="form-label">Date of Birth</label>
+                  <input type="date" class="form-control studio-input" id="clientAge" required>
+                  <div class="invalid-feedback">You must be 18+, ID verification required at appointment.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-card p-4" id="payment">
+              <h5 class="card-title-accent mb-4"><i class="bi bi-3-circle-fill text-accent"></i> <span id="paymentCardTitle">Secure Payment &mdash; Deposit Due Today</span></h5>
+
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="cardName" class="form-label">Name on Card</label>
+                  <input type="text" class="form-control studio-input" id="cardName" required>
+                  <div class="invalid-feedback">Please enter the cardholder name.</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="cardNumber" class="form-label">Card Number</label>
+                  <div class="input-group">
+                    <span class="input-group-text studio-input-icon"><i class="bi bi-credit-card"></i></span>
+                    <input type="text" class="form-control studio-input" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" pattern="^[0-9\s]{13,19}$" required>
+                  </div>
+                  <div class="invalid-feedback">Please enter a valid 16-digit card number.</div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                  <label for="cardExpiry" class="form-label">Expiry (MM/YY)</label>
+                  <input type="text" class="form-control studio-input" id="cardExpiry" maxlength="5" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/[0-9]{2}$" required>
+                  <div class="invalid-feedback">MM/YY format.</div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                  <label for="cardCvv" class="form-label">CVV</label>
+                  <input type="password" class="form-control studio-input" id="cardCvv" maxlength="4" placeholder="•••" pattern="^[0-9]{3,4}$" required>
+                  <div class="invalid-feedback">3-4 digits.</div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                  <label for="billingZip" class="form-label">Billing ZIP</label>
+                  <input type="text" class="form-control studio-input" id="billingZip" required>
+                  <div class="invalid-feedback">Required.</div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="policyAgree" required>
+                    <label class="form-check-label small text-muted" for="policyAgree">
+                      I confirm I am 18+ (or have guardian consent), agree to the studio policies, and understand deposits are non-refundable within 48 hours of appointment.
+                    </label>
+                    <div class="invalid-feedback">You must agree to continue.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Order Summary / Cart Sidebar -->
+          <div class="col-lg-5">
+            <div class="studio-card p-4 checkout-sidebar sticky-lg-top">
+              <h5 class="card-title-accent mb-4"><i class="bi bi-receipt"></i> Order Summary</h5>
+
+              <div class="summary-row" id="serviceSummaryRow">
+                <span>Selected Service</span>
+                <span id="summaryServiceName" class="text-end text-muted">&mdash;</span>
+              </div>
+              <div class="summary-row" id="servicePriceRow">
+                <span>Service Price</span>
+                <span id="summaryServicePrice">$0.00</span>
+              </div>
+              <div class="summary-row" id="depositRow">
+                <span>Required Deposit (25%)</span>
+                <span id="summaryDeposit" class="text-accent fw-bold">$0.00</span>
+              </div>
+
+              <hr class="summary-divider">
+
+              <h6 class="text-uppercase small text-muted mb-3">Aftercare Cart <span class="badge bg-secondary" id="cartItemCount">0 items</span></h6>
+              <div id="cartItemsList" class="cart-items-list mb-3">
+                <p class="text-muted small mb-0" id="emptyCartMsg">Your cart is empty. Add products from the Aftercare Shop.</p>
+              </div>
+              <div class="summary-row">
+                <span>Products Subtotal</span>
+                <span id="summaryProductsSubtotal">$0.00</span>
+              </div>
+
+              <hr class="summary-divider">
+
+              <div class="summary-row total-row">
+                <span>Total Due Today</span>
+                <span id="summaryTotalDueToday" class="text-accent">$0.00</span>
+              </div>
+              <p class="small text-muted mb-4" id="remainingBalanceNote">Remaining balance for services is due at your appointment.</p>
+
+              <div class="alert alert-warning small py-2 d-none" id="shopOnlyEmptyCartWarning" role="alert">
+                <i class="bi bi-exclamation-triangle"></i> Add at least one product to your cart before checking out.
+              </div>
+
+              <button type="submit" class="btn btn-accent btn-lg w-100 fw-semibold" id="submitBtn">
+                <i class="bi bi-shield-lock"></i> <span id="submitBtnText">Confirm Booking &amp; Pay Deposit</span>
+              </button>
+              <p class="text-center small text-muted mt-3 mb-0"><i class="bi bi-lock-fill"></i> 256-bit encrypted mock checkout. No real payment is processed.</p>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ACCORDION ============ -->
+  <section id="faq" class="section-padding">
+    <div class="container">
+      <div class="section-heading text-center mb-5">
+        <p class="text-accent text-uppercase small fw-semibold mb-1">Good to Know</p>
+        <h2 class="fw-bold">Studio Policies &amp; FAQ</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  What ID do I need to bring?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  A valid, government-issued photo ID (passport, driver's license, or national ID) is required for every client. Guests under 18 must be accompanied by a legal guardian with valid ID for eligible piercings; some tattoo services are strictly 18+.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  How does the deposit &amp; cancellation policy work?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  A 25% non-refundable deposit is required to confirm every booking and is deducted from your final session cost. Rescheduling requires at least 48 hours' notice; cancellations within 48 hours forfeit the deposit.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  How does Home Service work?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Our artists bring fully sterilized, single-use equipment and portable setups to your home. It's faster to book, more comfortable, and ideal for private sessions. Select "Home Visit" in the booking form — a small travel fee may apply depending on distance.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  What are the aftercare steps for tattoos?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Keep the bandage on for 2-4 hours, then gently wash with fragrance-free soap. Apply a thin layer of recommended aftercare balm 2-3 times daily, avoid direct sunlight, swimming, and tight clothing for at least 2 weeks. Never pick or scratch peeling skin.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  What are the aftercare steps for piercings?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Clean twice daily with sterile saline solution, avoid touching with unwashed hands, and do not rotate jewelry unnecessarily. Healing time varies from 4 weeks (earlobes) to 12 months (cartilage/navel). Contact us immediately if you notice excessive redness or discharge.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="studio-footer">
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a class="navbar-brand studio-brand d-block mb-3" href="#hero">
+            INK<span class="text-accent">&amp;</span>STEEL
+          </a>
+          <p class="text-muted small">Premium tattoo and piercing studio dedicated to sterile, professional, and artistic body work — in-studio or at home.</p>
+          <div class="d-flex gap-3 fs-5">
+            <a href="#" class="text-accent"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-accent"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-accent"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h6 class="text-uppercase small text-accent mb-3">Explore</h6>
+          <ul class="list-unstyled footer-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#booking">Booking</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h6 class="text-uppercase small text-accent mb-3">Studio</h6>
+          <ul class="list-unstyled footer-links">
+            <li><a href="#faq">FAQ &amp; Policies</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="text-uppercase small text-accent mb-3">Visit Us</h6>
+          <p class="text-muted small mb-1"><i class="bi bi-geo-alt"></i> 128 Ink Avenue, Studio City</p>
+          <p class="text-muted small mb-1"><i class="bi bi-telephone"></i> +1 (555) 010-0192</p>
+          <p class="text-muted small"><i class="bi bi-envelope"></i> hello@inkandsteel.studio</p>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <p class="text-center text-muted small mb-0">&copy; <span id="footerYear"></span> Ink &amp; Steel Studio. All rights reserved. Placeholder imagery courtesy of Unsplash.</p>
+    </div>
+  </footer>
+
+  <!-- ============ CART OFFCANVAS ============ -->
+  <div class="offcanvas offcanvas-end studio-offcanvas" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="cartOffcanvasLabel"><i class="bi bi-bag-check"></i> Your Aftercare Cart</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div id="offcanvasCartItems" class="flex-grow-1"></div>
+      <hr class="summary-divider">
+      <div class="summary-row total-row">
+        <span>Cart Total</span>
+        <span id="offcanvasCartTotal">$0.00</span>
+      </div>
+      <a href="#payment" id="proceedToCheckoutBtn" class="btn btn-accent w-100 mt-3">
+        <i class="bi bi-cart-check"></i> Proceed to Checkout
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ SUCCESS MODAL ============ -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content studio-modal">
+        <div class="modal-body text-center p-5">
+          <div class="success-icon mb-4"><i class="bi bi-check-circle-fill"></i></div>
+          <h3 class="fw-bold mb-2" id="modalHeading">Booking &amp; Pre-Order Confirmed!</h3>
+          <p class="text-muted mb-4">A confirmation email has been sent. Here's your summary:</p>
+
+          <div class="text-start success-summary p-4 mb-4">
+            <div class="summary-row"><span>Client</span><span id="modalClientName">&mdash;</span></div>
+            <div class="summary-row" id="modalServiceRow"><span>Service</span><span id="modalServiceName">&mdash;</span></div>
+            <div class="summary-row" id="modalArtistRow"><span>Artist</span><span id="modalArtistName">&mdash;</span></div>
+            <div class="summary-row" id="modalDateTimeRow"><span>Date &amp; Time</span><span id="modalDateTime">&mdash;</span></div>
+            <div class="summary-row" id="modalLocationRow"><span>Location</span><span id="modalLocation">&mdash;</span></div>
+            <div class="summary-row"><span>Aftercare Items</span><span id="modalCartItems">&mdash;</span></div>
+            <hr class="summary-divider">
+            <div class="summary-row total-row"><span>Total Paid Today</span><span id="modalTotalPaid" class="text-accent">$0.00</span></div>
+          </div>
+
+          <button type="button" class="btn btn-accent px-5" data-bs-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle (Popper included) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom App Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
