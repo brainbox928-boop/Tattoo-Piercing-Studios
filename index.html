@@ -376,7 +376,8 @@
                 </div>
                 <div class="col-md-6">
                   <label for="clientPhone" class="form-label">Phone Number</label>
-                  <input type="tel" class="form-control studio-input" id="clientPhone" pattern="^[0-9()+\s-]{7,20}$" placeholder="+1 (555) 123-4567" required>
+                  <input type="tel" class="form-control studio-input" id="clientPhone" pattern="\+?[0-9]{7,15}" placeholder="+13028281552" required>
+                  <div class="form-text text-light">Digits only; include a leading + and country code when needed.</div>
                   <div class="invalid-feedback">Please enter a valid phone number.</div>
                 </div>
                 <div class="col-md-6" id="dobFieldCol">

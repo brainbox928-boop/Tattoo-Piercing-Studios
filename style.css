@@ -449,6 +449,20 @@ select.studio-input option { background-color: #1e1e1e; }
 .payment-method-choice small { color: #dedede; }
 .btn-check:checked + .payment-method-choice { border-color: var(--accent); background: rgba(212,175,55,0.1); }
 .btn-check:focus-visible + .payment-method-choice { outline: 3px solid rgba(212,175,55,0.45); outline-offset: 2px; }
+.crypto-wallet-panel {
+  display: grid;
+  grid-template-columns: minmax(130px, 190px) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.65rem;
+  background: #111;
+}
+.crypto-qr-wrap { padding: 0.5rem; border-radius: 0.5rem; background: #fff; }
+.crypto-qr-wrap img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+.crypto-wallet-info { min-width: 0; }
+.crypto-wallet-info .form-control { min-width: 0; font-size: 0.9rem; }
 .bank-details > div {
   display: flex;
   justify-content: space-between;
@@ -482,6 +496,8 @@ select.studio-input option { background-color: #1e1e1e; }
 
 @media (max-width: 575.98px) {
   .manual-payment-content { padding: 1.25rem !important; }
+  .crypto-wallet-panel { grid-template-columns: minmax(0, 1fr); }
+  .crypto-qr-wrap { width: min(100%, 220px); margin: 0 auto; }
   .bank-details > div { align-items: flex-start; }
   .bank-details dd { text-align: right; overflow-wrap: anywhere; }
   .payment-summary-row { font-size: 0.9rem; }

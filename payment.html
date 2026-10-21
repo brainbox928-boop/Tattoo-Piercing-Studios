@@ -48,6 +48,7 @@
           <input type="hidden" name="products-details" id="paymentProductsDetails">
           <input type="hidden" name="payment-method" id="paymentMethodValue">
           <input type="hidden" name="crypto-asset" id="paymentCryptoValue">
+          <input type="hidden" name="confirmation-channel" id="confirmationChannelValue">
 
           <fieldset class="mb-4">
             <legend class="h5 mb-3">Choose payment method</legend>
@@ -80,14 +81,23 @@
 
           <section id="cryptoInstructions" class="payment-instructions mb-4 d-none">
             <h2 class="h5 mb-3"><i class="bi bi-currency-bitcoin text-accent me-2"></i>Cryptocurrency payment</h2>
-            <label for="cryptoAsset" class="form-label">Choose cryptocurrency</label>
+            <label for="cryptoAsset" class="form-label">Choose coin and network</label>
             <select class="form-select studio-input mb-3" id="cryptoAsset" name="crypto-choice">
-              <option value="BTC">Bitcoin (BTC)</option>
-              <option value="ETH">Ethereum (ETH)</option>
-              <option value="LTC">Litecoin (LTC)</option>
+              <option value="BTC">Bitcoin network (BTC)</option>
+              <option value="ETH">Ethereum network (ETH)</option>
+              <option value="LTC">Litecoin network (LTC)</option>
             </select>
-            <div class="alert alert-info mb-0" role="status">
-              <strong>Request the verified wallet address before sending.</strong> Wallet addresses were not included in the supplied payment details. Email <a href="mailto:Royal.ink.costumerservice@gmail.com">Royal.ink.costumerservice@gmail.com</a> with your order reference. Do not send funds to an address supplied by an unverified source.
+            <div class="crypto-wallet-panel">
+              <div class="crypto-qr-wrap"><img id="cryptoQrImage" src="Image/Bitcoin%20QR%20code.jpg" alt="Bitcoin payment QR code"></div>
+              <div class="crypto-wallet-info">
+                <p class="small text-light mb-1" id="cryptoNetworkName">Bitcoin network</p>
+                <label class="form-label" for="cryptoWalletAddress">Wallet address</label>
+                <div class="input-group">
+                  <input class="form-control studio-input" id="cryptoWalletAddress" type="text" readonly value="3DfMVLhNfUAQrhRSxy341KVsJnQpuDQx2o" aria-label="Bitcoin wallet address">
+                  <button type="button" class="btn btn-outline-accent" id="copyCryptoAddress" title="Copy wallet address" aria-label="Copy wallet address"><i class="bi bi-copy"></i></button>
+                </div>
+                <p class="small text-light mt-2 mb-0">Send only the selected coin on its matching network. Transfers to a different network may be lost.</p>
+              </div>
             </div>
           </section>
 
@@ -107,6 +117,13 @@
               <label for="paymentNote" class="form-label">Note <span class="text-light fw-normal">(optional)</span></label>
               <textarea class="form-control studio-input" id="paymentNote" name="customer-note" rows="3" maxlength="500" placeholder="Any detail that will help us match your payment?"></textarea>
             </div>
+            <div class="col-12">
+              <label for="confirmationChannel" class="form-label">Preferred confirmation contact</label>
+              <select class="form-select studio-input" id="confirmationChannel" name="confirmation-channel-choice" required>
+                <option value="email" selected>Email</option>
+                <option value="sms">SMS / text message</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-check my-4">
@@ -120,7 +137,7 @@
           </button>
         </form>
 
-        <p class="payment-review-note mt-4 mb-0"><i class="bi bi-info-circle text-accent me-1"></i>Submitting evidence does not confirm payment or reserve an appointment. Royal INK Studio will verify the transfer and contact you at the email above.</p>
+        <p class="payment-review-note mt-4 mb-0"><i class="bi bi-info-circle text-accent me-1"></i>Submitting evidence does not confirm payment or reserve an appointment. After manual verification, the studio will contact you using your preferred confirmation method.</p>
       </section>
 
       <footer class="payment-page-footer text-center text-light small py-4">

@@ -3,6 +3,26 @@ const paymentForm = document.getElementById("paymentEvidenceForm");
 const paymentOrderSummary = document.getElementById("orderSummary");
 const paymentError = document.getElementById("paymentFormError");
 const paymentOrder = readPendingOrder();
+const cryptoWallets = {
+  BTC: {
+    network: "Bitcoin network",
+    address: "3DfMVLhNfUAQrhRSxy341KVsJnQpuDQx2o",
+    qr: "Image/Bitcoin%20QR%20code.jpg",
+    alt: "Bitcoin payment QR code"
+  },
+  ETH: {
+    network: "Ethereum network",
+    address: "0xe968AE33B8a46f45cec836eFe852Ce7267f47a31",
+    qr: "Image/ETHERUM%20QR%20CODE.JPG",
+    alt: "Ethereum payment QR code"
+  },
+  LTC: {
+    network: "Litecoin network",
+    address: "MMuJ4C35oTyEF67xrdEk9CmF9npzUPDMyY",
+    qr: "Image/Litecoin%20QR%20code.jpg",
+    alt: "Litecoin payment QR code"
+  }
+};
 
 function readPendingOrder() {
   try {
@@ -45,6 +65,7 @@ function renderPaymentOrder(order) {
     <div class="payment-summary-row"><span>Artist</span><strong>${escapeHtml(order.booking.artist)}</strong></div>
     <div class="payment-summary-row"><span>Appointment</span><strong>${escapeHtml(order.booking.date)} · ${escapeHtml(order.booking.time)}</strong></div>
     <div class="payment-summary-row"><span>Location</span><strong>${escapeHtml(order.booking.location)}</strong></div>
+    <div class="payment-summary-row"><span>Design notes</span><strong>${escapeHtml(order.booking.notes)}</strong></div>
     <div class="payment-summary-row"><span>Service total</span><strong>${money(order.booking.serviceTotal)}</strong></div>
     <div class="payment-summary-row"><span>50% appointment deposit</span><strong>${money(order.booking.deposit)}</strong></div>
   ` : "";
@@ -75,15 +96,45 @@ function setPaymentMethod() {
   document.getElementById("bankInstructions").classList.toggle("d-none", cryptoSelected);
   document.getElementById("cryptoInstructions").classList.toggle("d-none", !cryptoSelected);
   document.getElementById("paymentMethodValue").value = method;
-  document.getElementById("paymentCryptoValue").value = cryptoSelected
-    ? document.getElementById("cryptoAsset").value
-    : "";
+  const asset = document.getElementById("cryptoAsset").value;
+  const wallet = cryptoWallets[asset];
+  document.getElementById("paymentCryptoValue").value = cryptoSelected ? asset : "";
+  document.getElementById("confirmationChannelValue").value = document.getElementById("confirmationChannel").value;
+
+  if (paymentOrder) {
+    paymentOrder.paymentMethod = method;
+    paymentOrder.cryptoAsset = cryptoSelected ? asset : "";
+    paymentOrder.confirmationChannel = document.getElementById("confirmationChannel").value;
+    sessionStorage.setItem(PAYMENT_STORAGE_KEY, JSON.stringify(paymentOrder));
+  }
+
+  if (wallet) {
+    document.getElementById("cryptoNetworkName").textContent = wallet.network;
+    document.getElementById("cryptoWalletAddress").value = wallet.address;
+    document.getElementById("cryptoWalletAddress").setAttribute("aria-label", `${asset} wallet address`);
+    document.getElementById("cryptoQrImage").src = wallet.qr;
+    document.getElementById("cryptoQrImage").alt = wallet.alt;
+  }
 }
 
 document.querySelectorAll('input[name="methodChoice"]').forEach((input) => {
   input.addEventListener("change", setPaymentMethod);
 });
 document.getElementById("cryptoAsset").addEventListener("change", setPaymentMethod);
+document.getElementById("confirmationChannel").addEventListener("change", setPaymentMethod);
+
+document.getElementById("copyCryptoAddress").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(document.getElementById("cryptoWalletAddress").value);
+    document.getElementById("copyCryptoAddress").innerHTML = '<i class="bi bi-check2"></i>';
+    window.setTimeout(() => {
+      document.getElementById("copyCryptoAddress").innerHTML = '<i class="bi bi-copy"></i>';
+    }, 1400);
+  } catch {
+    paymentError.textContent = "Clipboard access was blocked. Select and copy the wallet address manually.";
+    paymentError.classList.remove("d-none");
+  }
+});
 
 document.querySelectorAll(".copy-payment-value").forEach((button) => {
   button.addEventListener("click", async () => {
