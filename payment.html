@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Royal INK Studio manual payment instructions and order confirmation.">
+  <title>Manual Payment | Royal INK Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="manual-payment-page">
+  <main class="container py-4 py-lg-5">
+    <div class="manual-payment-shell mx-auto">
+      <header class="payment-page-header d-flex justify-content-between align-items-center gap-3 mb-4">
+        <a class="studio-brand" href="index.html" aria-label="Royal INK Studio home">
+          <span class="royal-mark" aria-hidden="true"><i class="bi bi-crown-fill"></i></span>
+          <span class="brand-name"><span class="brand-royal">ROYAL</span><span class="brand-ink">INK</span><small>STUDIO</small></span>
+        </a>
+        <a href="index.html#booking" class="btn btn-outline-accent btn-sm"><i class="bi bi-arrow-left"></i> Back to site</a>
+      </header>
+
+      <section class="manual-payment-content studio-card p-4 p-md-5">
+        <p class="text-accent text-uppercase small fw-semibold mb-2">Manual checkout</p>
+        <h1 class="h2 mb-2">Complete your payment</h1>
+        <p class="text-light">Choose bank transfer or cryptocurrency, send the amount shown, then submit your transaction reference for manual review. We do not process card payments on this site.</p>
+
+        <div id="orderSummary" class="payment-order-summary mb-4" aria-live="polite">
+          <p class="mb-0">Loading your order…</p>
+        </div>
+        <div id="missingOrderNotice" class="alert alert-warning d-none" role="alert">
+          We couldn't find an order from this browser session. Return to the site and submit your booking or cart again.
+          <a href="index.html#booking" class="alert-link">Return to checkout</a>.
+        </div>
+
+        <form name="royal-ink-payment-evidence" method="POST" action="payment-success.html" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" id="paymentEvidenceForm">
+          <input type="hidden" name="form-name" value="royal-ink-payment-evidence">
+          <div class="visually-hidden" aria-hidden="true"><label>Leave this empty<input name="bot-field" tabindex="-1" autocomplete="off"></label></div>
+          <input type="hidden" name="customer-name" id="paymentCustomerName">
+          <input type="hidden" name="customer-email" id="paymentCustomerEmail">
+          <input type="hidden" name="customer-phone" id="paymentCustomerPhone">
+          <input type="hidden" name="order-type" id="paymentOrderType">
+          <input type="hidden" name="order-summary" id="paymentOrderSummary">
+          <input type="hidden" name="order-total-usd" id="paymentOrderTotal">
+          <input type="hidden" name="booking-details" id="paymentBookingDetails">
+          <input type="hidden" name="products-details" id="paymentProductsDetails">
+          <input type="hidden" name="payment-method" id="paymentMethodValue">
+          <input type="hidden" name="crypto-asset" id="paymentCryptoValue">
+
+          <fieldset class="mb-4">
+            <legend class="h5 mb-3">Choose payment method</legend>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input class="btn-check" type="radio" name="methodChoice" id="methodBank" value="bank" checked>
+                <label class="payment-method-choice" for="methodBank">
+                  <i class="bi bi-bank"></i><span><strong>Bank transfer</strong><small>Chime Bank details</small></span>
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input class="btn-check" type="radio" name="methodChoice" id="methodCrypto" value="crypto">
+                <label class="payment-method-choice" for="methodCrypto">
+                  <i class="bi bi-currency-bitcoin"></i><span><strong>Cryptocurrency</strong><small>BTC, ETH, or LTC</small></span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <section id="bankInstructions" class="payment-instructions mb-4">
+            <h2 class="h5 mb-3"><i class="bi bi-bank text-accent me-2"></i>Bank transfer details</h2>
+            <p class="text-light small">Send the exact amount shown above. Include your name in the transfer note when supported.</p>
+            <dl class="bank-details mb-0">
+              <div><dt>Bank name</dt><dd>Chime Bank <button type="button" class="copy-payment-value" data-copy="Chime Bank" aria-label="Copy bank name" title="Copy bank name"><i class="bi bi-copy"></i></button></dd></div>
+              <div><dt>Routing number</dt><dd>103100195 <button type="button" class="copy-payment-value" data-copy="103100195" aria-label="Copy routing number" title="Copy routing number"><i class="bi bi-copy"></i></button></dd></div>
+              <div><dt>Account number</dt><dd>346700676379984 <button type="button" class="copy-payment-value" data-copy="346700676379984" aria-label="Copy account number" title="Copy account number"><i class="bi bi-copy"></i></button></dd></div>
+              <div><dt>Chime Bank tag</dt><dd>$jay-Ray-8 <button type="button" class="copy-payment-value" data-copy="$jay-Ray-8" aria-label="Copy Chime tag" title="Copy Chime tag"><i class="bi bi-copy"></i></button></dd></div>
+            </dl>
+          </section>
+
+          <section id="cryptoInstructions" class="payment-instructions mb-4 d-none">
+            <h2 class="h5 mb-3"><i class="bi bi-currency-bitcoin text-accent me-2"></i>Cryptocurrency payment</h2>
+            <label for="cryptoAsset" class="form-label">Choose cryptocurrency</label>
+            <select class="form-select studio-input mb-3" id="cryptoAsset" name="crypto-choice">
+              <option value="BTC">Bitcoin (BTC)</option>
+              <option value="ETH">Ethereum (ETH)</option>
+              <option value="LTC">Litecoin (LTC)</option>
+            </select>
+            <div class="alert alert-info mb-0" role="status">
+              <strong>Request the verified wallet address before sending.</strong> Wallet addresses were not included in the supplied payment details. Email <a href="mailto:Royal.ink.costumerservice@gmail.com">Royal.ink.costumerservice@gmail.com</a> with your order reference. Do not send funds to an address supplied by an unverified source.
+            </div>
+          </section>
+
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="transactionReference" class="form-label">Transaction reference</label>
+              <input class="form-control studio-input" id="transactionReference" name="transaction-reference" type="text" maxlength="120" required placeholder="Bank reference or crypto transaction ID">
+              <div class="invalid-feedback">Enter your bank reference or transaction ID.</div>
+            </div>
+            <div class="col-12">
+              <label for="paymentReceipt" class="form-label">Payment receipt or screenshot</label>
+              <input class="form-control studio-input" id="paymentReceipt" name="payment-receipt" type="file" accept="image/*,.pdf" required>
+              <div class="form-text">Upload only evidence needed to verify this transfer. Hide full card numbers, passwords, and security codes.</div>
+              <div class="invalid-feedback">Upload a receipt or screenshot.</div>
+            </div>
+            <div class="col-12">
+              <label for="paymentNote" class="form-label">Note <span class="text-light fw-normal">(optional)</span></label>
+              <textarea class="form-control studio-input" id="paymentNote" name="customer-note" rows="3" maxlength="500" placeholder="Any detail that will help us match your payment?"></textarea>
+            </div>
+          </div>
+
+          <div class="form-check my-4">
+            <input class="form-check-input" type="checkbox" value="yes" id="paymentConfirmation" name="payment-sent" required>
+            <label class="form-check-label text-light" for="paymentConfirmation">I have sent the displayed amount and understand this submission is for manual review only.</label>
+            <div class="invalid-feedback">Confirm that you have sent the payment before submitting evidence.</div>
+          </div>
+          <div id="paymentFormError" class="alert alert-warning d-none" role="alert"></div>
+          <button type="submit" class="btn btn-accent btn-lg w-100" id="submitEvidenceButton">
+            <i class="bi bi-cloud-arrow-up me-2"></i>Submit payment evidence
+          </button>
+        </form>
+
+        <p class="payment-review-note mt-4 mb-0"><i class="bi bi-info-circle text-accent me-1"></i>Submitting evidence does not confirm payment or reserve an appointment. Royal INK Studio will verify the transfer and contact you at the email above.</p>
+      </section>
+
+      <footer class="payment-page-footer text-center text-light small py-4">
+        <p class="mb-1"><a href="tel:+13028281552">+1 302 828 1552</a> · <a href="mailto:Royal.ink.costumerservice@gmail.com">Royal.ink.costumerservice@gmail.com</a></p>
+        <p class="mb-0">128 Ink Avenue, Studio City</p>
+      </footer>
+    </div>
+  </main>
+  <script src="payment.js"></script>
+</body>
+</html>

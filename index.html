@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ink & Steel Studio | Premium Tattoo &amp; Piercing</title>
-  <meta name="description" content="Ink & Steel — a premium tattoo and piercing studio. Book appointments, browse our gallery, and pre-order aftercare products.">
+  <title>Royal INK Studio | Tattoo &amp; Piercing</title>
+  <meta name="description" content="Royal INK Studio — professional tattoo, piercing, and aftercare. Explore our work and request an appointment.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,8 +23,9 @@
   <!-- ============ NAVIGATION ============ -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top studio-navbar" id="mainNav">
     <div class="container">
-      <a class="navbar-brand studio-brand" href="#hero">
-        <i class="bi bi-magnet-fill brand-icon"></i> INK<span class="text-accent">&amp;</span>STEEL
+      <a class="navbar-brand studio-brand" href="#hero" aria-label="Royal INK Studio home">
+        <span class="royal-mark" aria-hidden="true"><i class="bi bi-crown-fill"></i></span>
+        <span class="brand-name"><span class="brand-royal">ROYAL</span><span class="brand-ink">INK</span><small>STUDIO</small></span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -123,17 +124,17 @@
   <!-- ============ SERVICES & PRICING ============ -->
   <section id="services" class="section-padding">
     <div class="container">
-      <div class="section-heading text-center mb-5">
+          <div class="section-heading text-center mb-5">
         <p class="text-accent text-uppercase small fw-semibold mb-1">Our Craft</p>
         <h2 class="fw-bold">Services &amp; Pricing</h2>
-        <p class="text-muted">Transparent, session-based pricing. Final quotes confirmed during consultation.</p>
+        <p class="text-muted">Tattoo is the service; choose a priced size and style. Listed tattoo rates are starting prices and final quotes are confirmed with your artist.</p>
       </div>
 
       <!-- Bootstrap Pills for Tattoo vs Piercing -->
       <ul class="nav nav-pills justify-content-center mb-5 studio-pills" id="servicesTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="tattoo-tab" data-bs-toggle="pill" data-bs-target="#tattoo-pane" type="button" role="tab" aria-selected="true">
-            <i class="bi bi-brush"></i> Tattoo Styles
+            <i class="bi bi-brush"></i> Tattoo Pricing
           </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -144,7 +145,7 @@
       </ul>
 
       <div class="tab-content" id="servicesTabContent">
-        <!-- Tattoo Styles: populated by JS from APP_DATA.tattooStyles -->
+        <!-- Tattoo price groups and appointment options are generated from the editable data in script.js. -->
         <div class="tab-pane fade show active" id="tattoo-pane" role="tabpanel">
           <div class="row g-4" id="tattooPricingGrid"></div>
         </div>
@@ -174,65 +175,74 @@
       -->
       <div class="masonry-grid" id="galleryGrid">
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=700&q=80" alt="Realism Portrait Sleeve" loading="lazy">
+          <img src="Image/Full legs tattoo sleeve.jpg"
+          alt="Realism Portrait Sleeve" loading="lazy">
           <div class="masonry-caption">
-            <h6>Realism Portrait Sleeve</h6>
+            <h6>Full legs tattoo sleeve</h6>
             <small>Tattoo &middot; Realism</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&w=700&q=80" alt="Traditional Eagle Chest Piece" loading="lazy">
+          <img src="Image/winged compass tattoo.jpg"
+           alt="Traditional Eagle Chest Piece" loading="lazy">
           <div class="masonry-caption">
-            <h6>Traditional Eagle Chest Piece</h6>
+            <h6>Traditional winged compass tattoo</h6>
             <small>Tattoo &middot; Traditional</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=700&q=80" alt="Fine Line Botanical Forearm" loading="lazy">
+          <img src="Image/Full - hand sleeve tattoo.jpg" 
+          alt="Fine Line Botanical Forearm" loading="lazy">
           <div class="masonry-caption">
-            <h6>Fine Line Botanical Forearm</h6>
+            <h6>Full hand sleeve</h6>
             <small>Tattoo &middot; Fine Line</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=700&q=80" alt="Blackwork Geometric Sleeve" loading="lazy">
+          <img src="Image/Tiger and Woman Realism Back Piece Full back tattoo.jpg" 
+          alt="Blackwork Geometric Sleeve" loading="lazy">
           <div class="masonry-caption">
-            <h6>Blackwork Geometric Sleeve</h6>
+            <h6>Tiger and Woman Realism Back Piece Full back tattoo</h6>
             <small>Tattoo &middot; Blackwork</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1601049676869-702ea24cfd58?auto=format&fit=crop&w=700&q=80" alt="Curated Ear Stack" loading="lazy">
+          <img src="Image/fine-line blackwork dreamcatcher tatto.jpg" 
+          alt="Fine-line blackwork dreamcatcher tattoo" loading="lazy">
           <div class="masonry-caption">
-            <h6>Curated Ear Stack</h6>
-            <small>Piercing &middot; Cartilage</small>
+            <h6>Fine-line blackwork dreamcatcher tatto</h6>
+            <small>Tattoo &middot; Blackwork</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=700&q=80" alt="Septum & Nose Combo" loading="lazy">
+          <img src="Image/floral butterfly tattoo.jpg" 
+          alt="Floral butterfly tattoo" loading="lazy">
           <div class="masonry-caption">
-            <h6>Septum &amp; Nose Combo</h6>
-            <small>Piercing &middot; Septum</small>
+            <h6>Floral butterfly tattoo</h6>
+            <small>Tattoo &middot; Floral</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1618886614638-80e3c103d31a?auto=format&fit=crop&w=700&q=80" alt="Studio Session in Progress" loading="lazy">
+          <img src="Image/Full - back black-and-grey realism tattoo.jpg" 
+          alt="Studio Session in Progress" loading="lazy">
           <div class="masonry-caption">
-            <h6>Studio Session in Progress</h6>
+            <h6>Full - back black-and-grey realism tattoo</h6>
             <small>Behind the Scenes</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=700&q=80" alt="Minimalist Line Work" loading="lazy">
+          <img src="Image/Full - hand sleeve tattoo.jpg" 
+           alt="Minimalist Line Work" loading="lazy">
           <div class="masonry-caption">
-            <h6>Minimalist Line Work</h6>
+            <h6>Full - hand sleeve tattoo</h6>
             <small>Tattoo &middot; Fine Line</small>
           </div>
         </div>
         <div class="masonry-item">
-          <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=700&q=80" alt="Bold Traditional Rose" loading="lazy">
+          <img src="Image/shoulder tattoo.jpg" 
+          alt="Bold Traditional Rose" loading="lazy">
           <div class="masonry-caption">
-            <h6>Bold Traditional Rose</h6>
+            <h6>Shoulder tattoo</h6>
             <small>Tattoo &middot; Traditional</small>
           </div>
         </div>
@@ -259,7 +269,7 @@
       <div class="section-heading text-center mb-5">
         <p class="text-accent text-uppercase small fw-semibold mb-1">Reserve Your Session</p>
         <h2 class="fw-bold">Booking &amp; Pre-Order Checkout</h2>
-        <p class="text-muted">Secure your slot with a 25% deposit, or skip straight to paying for aftercare products.</p>
+        <p class="text-muted">Submit your booking or aftercare order, then complete payment by bank transfer or cryptocurrency.</p>
       </div>
 
       <!-- Checkout mode toggle: lets shop-only customers skip the booking fields entirely -->
@@ -283,9 +293,9 @@
 
               <div class="row g-3">
                 <div class="col-md-6">
-                  <label for="serviceCategory" class="form-label">Category</label>
+                  <label for="serviceCategory" class="form-label">Service</label>
                   <select class="form-select studio-input" id="serviceCategory" required>
-                    <option value="" selected disabled>Choose category…</option>
+                    <option value="" selected disabled>Choose service…</option>
                     <option value="tattoo">Tattoo</option>
                     <option value="piercing">Piercing</option>
                   </select>
@@ -293,11 +303,18 @@
                 </div>
 
                 <div class="col-md-6">
-                  <label for="serviceSelect" class="form-label">Service / Style</label>
+                  <label for="serviceSelect" class="form-label">Style / Piercing</label>
                   <select class="form-select studio-input" id="serviceSelect" required disabled>
-                    <option value="" selected disabled>Select category first…</option>
+                    <option value="" selected disabled>Select a service first…</option>
                   </select>
-                  <div class="invalid-feedback">Please select a service.</div>
+                  <div class="invalid-feedback">Please select a style or piercing.</div>
+                </div>
+
+                <div class="col-md-6 d-none" id="customQuoteField">
+                  <label for="customQuoteAmount" class="form-label">Final price agreed with your artist (USD)</label>
+                  <input type="number" class="form-control studio-input" id="customQuoteAmount" min="1" step="0.01" inputmode="decimal">
+                  <div class="form-text text-light">Enter the final agreed price. Your deposit is 50% of this amount.</div>
+                  <div class="invalid-feedback">Enter a valid final price at or above the listed starting price.</div>
                 </div>
 
                 <div class="col-md-6">
@@ -359,7 +376,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="clientPhone" class="form-label">Phone Number</label>
-                  <input type="tel" class="form-control studio-input" id="clientPhone" pattern="^[0-9+\-\s()]{7,20}$" placeholder="+1 (555) 123-4567" required>
+                  <input type="tel" class="form-control studio-input" id="clientPhone" pattern="^[0-9()+\s-]{7,20}$" placeholder="+1 (555) 123-4567" required>
                   <div class="invalid-feedback">Please enter a valid phone number.</div>
                 </div>
                 <div class="col-md-6" id="dobFieldCol">
@@ -371,51 +388,14 @@
             </div>
 
             <div class="studio-card p-4" id="payment">
-              <h5 class="card-title-accent mb-4"><i class="bi bi-3-circle-fill text-accent"></i> <span id="paymentCardTitle">Secure Payment &mdash; Deposit Due Today</span></h5>
-
-              <div class="row g-3">
-                <div class="col-12">
-                  <label for="cardName" class="form-label">Name on Card</label>
-                  <input type="text" class="form-control studio-input" id="cardName" required>
-                  <div class="invalid-feedback">Please enter the cardholder name.</div>
-                </div>
-
-                <div class="col-12">
-                  <label for="cardNumber" class="form-label">Card Number</label>
-                  <div class="input-group">
-                    <span class="input-group-text studio-input-icon"><i class="bi bi-credit-card"></i></span>
-                    <input type="text" class="form-control studio-input" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" pattern="^[0-9\s]{13,19}$" required>
-                  </div>
-                  <div class="invalid-feedback">Please enter a valid 16-digit card number.</div>
-                </div>
-
-                <div class="col-6 col-md-4">
-                  <label for="cardExpiry" class="form-label">Expiry (MM/YY)</label>
-                  <input type="text" class="form-control studio-input" id="cardExpiry" maxlength="5" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/[0-9]{2}$" required>
-                  <div class="invalid-feedback">MM/YY format.</div>
-                </div>
-
-                <div class="col-6 col-md-4">
-                  <label for="cardCvv" class="form-label">CVV</label>
-                  <input type="password" class="form-control studio-input" id="cardCvv" maxlength="4" placeholder="•••" pattern="^[0-9]{3,4}$" required>
-                  <div class="invalid-feedback">3-4 digits.</div>
-                </div>
-
-                <div class="col-12 col-md-4">
-                  <label for="billingZip" class="form-label">Billing ZIP</label>
-                  <input type="text" class="form-control studio-input" id="billingZip" required>
-                  <div class="invalid-feedback">Required.</div>
-                </div>
-
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="policyAgree" required>
-                    <label class="form-check-label small text-muted" for="policyAgree">
-                      I confirm I am 18+ (or have guardian consent), agree to the studio policies, and understand deposits are non-refundable within 48 hours of appointment.
-                    </label>
-                    <div class="invalid-feedback">You must agree to continue.</div>
-                  </div>
-                </div>
+              <h5 class="card-title-accent mb-3"><i class="bi bi-3-circle-fill text-accent"></i> <span id="paymentCardTitle">Manual Payment — 50% deposit due today</span></h5>
+              <p class="text-light mb-3">The next page will show bank transfer and crypto instructions. Your appointment is not confirmed until the studio manually verifies the 50% deposit.</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="policyAgree" required>
+                    <label class="form-check-label small text-light" for="policyAgree">
+                      <span id="policyAgreeText">I agree to studio policies and understand my appointment is pending until the 50% deposit is verified.</span>
+                </label>
+                <div class="invalid-feedback">Please confirm before continuing.</div>
               </div>
             </div>
           </div>
@@ -434,7 +414,7 @@
                 <span id="summaryServicePrice">$0.00</span>
               </div>
               <div class="summary-row" id="depositRow">
-                <span>Required Deposit (25%)</span>
+                <span>Required Deposit (50%)</span>
                 <span id="summaryDeposit" class="text-accent fw-bold">$0.00</span>
               </div>
 
@@ -455,16 +435,16 @@
                 <span>Total Due Today</span>
                 <span id="summaryTotalDueToday" class="text-accent">$0.00</span>
               </div>
-              <p class="small text-muted mb-4" id="remainingBalanceNote">Remaining balance for services is due at your appointment.</p>
+              <p class="small text-light mb-4" id="remainingBalanceNote">The remaining balance is due at your appointment after the deposit is verified.</p>
 
               <div class="alert alert-warning small py-2 d-none" id="shopOnlyEmptyCartWarning" role="alert">
                 <i class="bi bi-exclamation-triangle"></i> Add at least one product to your cart before checking out.
               </div>
 
               <button type="submit" class="btn btn-accent btn-lg w-100 fw-semibold" id="submitBtn">
-                <i class="bi bi-shield-lock"></i> <span id="submitBtnText">Confirm Booking &amp; Pay Deposit</span>
+                <i class="bi bi-arrow-right-circle"></i> <span id="submitBtnText">Continue to Manual Payment</span>
               </button>
-              <p class="text-center small text-muted mt-3 mb-0"><i class="bi bi-lock-fill"></i> 256-bit encrypted mock checkout. No real payment is processed.</p>
+              <p class="text-center small text-light mt-3 mb-0"><i class="bi bi-info-circle"></i> No card details are collected on this website.</p>
             </div>
           </div>
 
@@ -505,7 +485,7 @@
               </h2>
               <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  A 25% non-refundable deposit is required to confirm every booking and is deducted from your final session cost. Rescheduling requires at least 48 hours' notice; cancellations within 48 hours forfeit the deposit.
+                  A 50% deposit is required before an appointment is confirmed and is deducted from your final session cost. Your booking remains pending until the studio verifies payment. Rescheduling requires at least 48 hours' notice; cancellations within 48 hours forfeit the deposit.
                 </div>
               </div>
             </div>
@@ -561,14 +541,10 @@
       <div class="row g-4">
         <div class="col-lg-4">
           <a class="navbar-brand studio-brand d-block mb-3" href="#hero">
-            INK<span class="text-accent">&amp;</span>STEEL
+            <span class="royal-mark" aria-hidden="true"><i class="bi bi-crown-fill"></i></span>
+            <span class="brand-name"><span class="brand-royal">ROYAL</span><span class="brand-ink">INK</span><small>STUDIO</small></span>
           </a>
-          <p class="text-muted small">Premium tattoo and piercing studio dedicated to sterile, professional, and artistic body work — in-studio or at home.</p>
-          <div class="d-flex gap-3 fs-5">
-            <a href="#" class="text-accent"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-accent"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-accent"><i class="bi bi-tiktok"></i></a>
-          </div>
+          <p class="text-light small">Professional tattoo and piercing artistry, with studio and home-service appointments.</p>
         </div>
         <div class="col-lg-2 col-6">
           <h6 class="text-uppercase small text-accent mb-3">Explore</h6>
@@ -590,12 +566,12 @@
         <div class="col-lg-4">
           <h6 class="text-uppercase small text-accent mb-3">Visit Us</h6>
           <p class="text-muted small mb-1"><i class="bi bi-geo-alt"></i> 128 Ink Avenue, Studio City</p>
-          <p class="text-muted small mb-1"><i class="bi bi-telephone"></i> +1 (555) 010-0192</p>
-          <p class="text-muted small"><i class="bi bi-envelope"></i> hello@inkandsteel.studio</p>
+          <p class="text-light small mb-1"><i class="bi bi-telephone"></i> <a href="tel:+13028281552">+1 302 828 1552</a></p>
+          <p class="text-light small"><i class="bi bi-envelope"></i> <a href="mailto:Royal.ink.costumersservice@gmail.com">Royal.ink.costumersservice@gmail.com</a></p>
         </div>
       </div>
       <hr class="border-secondary my-4">
-      <p class="text-center text-muted small mb-0">&copy; <span id="footerYear"></span> Ink &amp; Steel Studio. All rights reserved. Placeholder imagery courtesy of Unsplash.</p>
+      <p class="text-center text-light small mb-0">&copy; <span id="footerYear"></span> Royal INK Studio. All rights reserved.</p>
     </div>
   </footer>
 
@@ -615,32 +591,6 @@
       <a href="#payment" id="proceedToCheckoutBtn" class="btn btn-accent w-100 mt-3">
         <i class="bi bi-cart-check"></i> Proceed to Checkout
       </a>
-    </div>
-  </div>
-
-  <!-- ============ SUCCESS MODAL ============ -->
-  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content studio-modal">
-        <div class="modal-body text-center p-5">
-          <div class="success-icon mb-4"><i class="bi bi-check-circle-fill"></i></div>
-          <h3 class="fw-bold mb-2" id="modalHeading">Booking &amp; Pre-Order Confirmed!</h3>
-          <p class="text-muted mb-4">A confirmation email has been sent. Here's your summary:</p>
-
-          <div class="text-start success-summary p-4 mb-4">
-            <div class="summary-row"><span>Client</span><span id="modalClientName">&mdash;</span></div>
-            <div class="summary-row" id="modalServiceRow"><span>Service</span><span id="modalServiceName">&mdash;</span></div>
-            <div class="summary-row" id="modalArtistRow"><span>Artist</span><span id="modalArtistName">&mdash;</span></div>
-            <div class="summary-row" id="modalDateTimeRow"><span>Date &amp; Time</span><span id="modalDateTime">&mdash;</span></div>
-            <div class="summary-row" id="modalLocationRow"><span>Location</span><span id="modalLocation">&mdash;</span></div>
-            <div class="summary-row"><span>Aftercare Items</span><span id="modalCartItems">&mdash;</span></div>
-            <hr class="summary-divider">
-            <div class="summary-row total-row"><span>Total Paid Today</span><span id="modalTotalPaid" class="text-accent">$0.00</span></div>
-          </div>
-
-          <button type="button" class="btn btn-accent px-5" data-bs-dismiss="modal">Done</button>
-        </div>
-      </div>
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   INK & STEEL STUDIO — CUSTOM THEME OVERRIDES
+  ROYAL INK STUDIO — CUSTOM THEME OVERRIDES
    Dark luxury theme built on top of Bootstrap 5 utilities/grid.
    ========================================================================== */
 
@@ -37,6 +37,8 @@ h1, h2, h3, h4, h5, .studio-brand {
 .text-accent { color: var(--accent) !important; }
 .bg-darker { background-color: var(--bg-darker); }
 .section-padding { padding: 5.5rem 0; }
+.text-muted { color: #e2e2e2 !important; }
+.form-text { color: #d7d7d7 !important; }
 
 /* ---------------- Buttons ---------------- */
 .btn-accent {
@@ -70,11 +72,42 @@ h1, h2, h3, h4, h5, .studio-brand {
   transition: background-color 0.3s ease;
 }
 .studio-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 1.4rem;
+  letter-spacing: 0;
+  font-size: 1rem;
+  text-decoration: none;
 }
-.brand-icon { color: var(--accent); }
+.royal-mark {
+  width: 2.7rem;
+  height: 2.7rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 1.15rem;
+  box-shadow: inset 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+.brand-name {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+  column-gap: 0.32rem;
+  line-height: 1;
+}
+.brand-royal { color: #fff; font-size: 1rem; letter-spacing: 0.12em; }
+.brand-ink { color: var(--accent); font-size: 1.35rem; letter-spacing: 0.04em; }
+.brand-name small {
+  grid-column: 1 / -1;
+  color: #e2e2e2;
+  font: 500 0.55rem var(--font-body);
+  letter-spacing: 0.3em;
+  text-align: right;
+  margin-top: 0.2rem;
+}
 .navbar-nav .nav-link {
   color: #d6d6d6;
   font-weight: 500;
@@ -192,11 +225,21 @@ h1, h2, h3, h4, h5, .studio-brand {
 }
 .pricing-card ul { list-style: none; padding-left: 0; }
 .pricing-card ul li {
-  color: var(--text-muted);
+  color: #f0f0f0;
   font-size: 0.92rem;
   padding: 0.2rem 0;
 }
 .pricing-card ul li i { color: var(--accent); margin-right: 0.4rem; }
+.tattoo-price-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.65rem 0 !important;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.tattoo-price-list li:last-child { border-bottom: 0; }
+.tattoo-price-list strong { color: var(--accent); text-align: right; white-space: nowrap; }
 
 /* ---------------- Gallery Masonry ---------------- */
 .masonry-grid {
@@ -267,6 +310,7 @@ h1, h2, h3, h4, h5, .studio-brand {
   color: var(--accent);
 }
 .form-label { color: #cfcfcf; font-size: 0.9rem; font-weight: 500; }
+.form-check-label { color: #f0f0f0; }
 .form-check-input:checked {
   background-color: var(--accent);
   border-color: var(--accent);
@@ -364,3 +408,81 @@ select.studio-input option { background-color: #1e1e1e; }
   100% { transform: scale(1); }
 }
 .cart-badge.pop { animation: pop 0.35s ease; }
+
+/* ---------------- Manual payment pages ---------------- */
+.manual-payment-page { min-height: 100vh; background: radial-gradient(circle at 12% 0%, #252014 0, var(--bg-base) 35rem); }
+.manual-payment-shell { max-width: 900px; }
+.payment-page-header { min-height: 3.5rem; }
+.manual-payment-content { border-radius: 1rem; }
+.payment-order-summary,
+.payment-instructions {
+  padding: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  background: #171717;
+}
+.payment-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: #f0f0f0;
+}
+.payment-summary-row strong { color: #fff; text-align: right; }
+.payment-summary-total { margin-top: 0.4rem; border-bottom: 0; font-size: 1.1rem; font-weight: 700; }
+.payment-summary-total strong { color: var(--accent); }
+.payment-method-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 76px;
+  padding: 1rem;
+  border: 1px solid #555;
+  border-radius: 0.65rem;
+  color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.payment-method-choice > i { color: var(--accent); font-size: 1.4rem; }
+.payment-method-choice span { display: grid; gap: 0.15rem; }
+.payment-method-choice small { color: #dedede; }
+.btn-check:checked + .payment-method-choice { border-color: var(--accent); background: rgba(212,175,55,0.1); }
+.btn-check:focus-visible + .payment-method-choice { outline: 3px solid rgba(212,175,55,0.45); outline-offset: 2px; }
+.bank-details > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.bank-details > div:last-child { border-bottom: 0; }
+.bank-details dt { color: #e2e2e2; font-weight: 500; }
+.bank-details dd { display: flex; align-items: center; gap: 0.6rem; margin: 0; color: #fff; font-weight: 600; }
+.copy-payment-value {
+  width: 2rem;
+  height: 2rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #777;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--accent);
+}
+.copy-payment-value:hover { border-color: var(--accent); background: rgba(212,175,55,0.1); }
+.manual-payment-content .alert-info { --bs-alert-color: #fff; --bs-alert-bg: #17303a; --bs-alert-border-color: #397184; }
+.manual-payment-content .alert-info a { color: #fff; text-decoration: underline; }
+.payment-review-note { color: #f0f0f0; }
+.payment-page-footer a { color: #fff; }
+.checkout-result-body { max-width: 700px; margin: 0 auto; padding: 2rem 0; text-align: center; }
+.checkout-result-body h1, .checkout-result-body h2 { color: #fff; }
+.checkout-result-body p { color: #ededed; line-height: 1.7; }
+.checkout-result-body .payment-review-note { padding: 1rem; border: 1px solid var(--border-subtle); border-radius: 0.65rem; background: #171717; }
+
+@media (max-width: 575.98px) {
+  .manual-payment-content { padding: 1.25rem !important; }
+  .bank-details > div { align-items: flex-start; }
+  .bank-details dd { text-align: right; overflow-wrap: anywhere; }
+  .payment-summary-row { font-size: 0.9rem; }
+}

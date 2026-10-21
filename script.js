@@ -1,44 +1,51 @@
 /* ==========================================================================
-   INK & STEEL STUDIO — APP LOGIC (Vanilla ES6)
+  ROYAL INK STUDIO — APP LOGIC (Vanilla ES6)
    All editable content (prices, names, images, artists, slots) lives in
    APP_DATA below. Update this object only — no HTML digging required.
    ========================================================================== */
 
 const APP_DATA = {
 
-  // ---- Tattoo styles: id, name, price (USD), description, bullet features, icon ----
-  tattooStyles: [
+  // ---- Tattoo styles grouped by project size; null price means artist quote ----
+  tattooPricingGroups: [
     {
-      id: "tattoo-realism",
-      name: "Realism",
-      price: 350,
-      icon: "bi-camera",
-      description: "Hyper-detailed, photographic-quality portraits and scenes.",
-      features: ["Custom shading & depth", "2-3 session average", "Best for large pieces"]
+      name: "Small & Simple Tattoos",
+      styles: [
+        { id: "tattoo-small-simple", name: "Small/simple design", price: 400 },
+        { id: "tattoo-small-lettering", name: "Small lettering", price: 400 },
+        { id: "tattoo-fine-line", name: "Fine-line piece", price: 450 },
+        { id: "tattoo-small-detailed", name: "Small detailed piece", price: 500 }
+      ]
     },
     {
-      id: "tattoo-traditional",
-      name: "Traditional",
-      price: 220,
-      icon: "bi-anchor",
-      description: "Bold lines, classic Americana motifs, and vivid solid color.",
-      features: ["Bold outlines", "Single session friendly", "Timeless designs"]
+      name: "Medium Tattoos",
+      styles: [
+        { id: "tattoo-medium-custom", name: "Medium custom design", price: 600 },
+        { id: "tattoo-medium-realism", name: "Medium realism", price: 700 },
+        { id: "tattoo-medium-portrait", name: "Medium portrait", price: 800 },
+        { id: "tattoo-medium-detailed", name: "Detailed custom piece", price: 900 }
+      ]
     },
     {
-      id: "tattoo-fineline",
-      name: "Fine Line",
-      price: 180,
-      icon: "bi-pencil",
-      description: "Delicate, minimalist linework ideal for subtle statement pieces.",
-      features: ["Minimalist aesthetic", "Great for first tattoos", "Low scarring risk"]
+      name: "Large Tattoos",
+      styles: [
+        { id: "tattoo-large-custom", name: "Large custom piece", price: 900 },
+        { id: "tattoo-large-realism", name: "Large realism", price: 1200 },
+        { id: "tattoo-back-chest-detailed", name: "Detailed back/chest piece", price: 1500 },
+        { id: "tattoo-large-artwork", name: "Large custom artwork", price: 1800 }
+      ]
     },
     {
-      id: "tattoo-blackwork",
-      name: "Blackwork",
-      price: 260,
-      icon: "bi-moon-stars",
-      description: "Bold geometric patterns and solid black ink compositions.",
-      features: ["High contrast", "Geometric precision", "Statement coverage"]
+      name: "Sleeves & Large-Scale Work",
+      styles: [
+        { id: "tattoo-half-sleeve", name: "Half sleeve", price: 1500 },
+        { id: "tattoo-full-sleeve", name: "Full sleeve", price: 2500 },
+        { id: "tattoo-large-back", name: "Large back piece", price: 3000 },
+        { id: "tattoo-large-chest", name: "Large chest piece", price: 3000 },
+        { id: "tattoo-japanese-large", name: "Japanese-style large piece", price: 2500 },
+        { id: "tattoo-full-back", name: "Full back/large-scale project", price: 4000 },
+        { id: "tattoo-bodysuit", name: "Full bodysuit projects — custom quote", price: null }
+      ]
     }
   ],
 
@@ -140,7 +147,7 @@ const APP_DATA = {
   ],
 
   // ---- Business constants ----
-  depositRate: 0.25 // 25% deposit required on all bookings
+  depositRate: 0.5 // 50% deposit required before an appointment is confirmed
 };
 
 /* ==========================================================================
@@ -149,21 +156,26 @@ const APP_DATA = {
 const cart = {}; // { productId: { ...product, qty } }
 let selectedServicePrice = 0;
 let selectedServiceLabel = "—";
+let selectedServiceId = "";
 let checkoutMode = "booking"; // "booking" (service + products) or "shop-only" (products only, no artist required)
 
 // Field ids that are only required when booking an appointment
 const BOOKING_ONLY_FIELD_IDS = [
-  "serviceCategory", "serviceSelect", "artistSelect",
+  "serviceCategory", "serviceSelect", "artistSelect", "locationType",
   "appointmentDate", "appointmentTime", "designNotes", "clientAge"
 ];
 
 /* ==========================================================================
    UTILITIES
    ========================================================================== */
-const formatCurrency = (amount) => `$${amount.toFixed(2)}`;
+const formatCurrency = (amount) => `$${Number(amount).toFixed(2)}`;
+
+function getTattooStyles() {
+  return APP_DATA.tattooPricingGroups.flatMap((group) => group.styles.map((style) => ({ ...style, group: group.name })));
+}
 
 function getServiceById(id) {
-  return [...APP_DATA.tattooStyles, ...APP_DATA.piercingOptions].find((s) => s.id === id);
+  return [...getTattooStyles(), ...APP_DATA.piercingOptions].find((s) => s.id === id);
 }
 
 function getProductById(id) {
@@ -184,6 +196,24 @@ function renderPricingGrid(containerId, items) {
         <p class="text-muted small mb-3">${item.description}</p>
         <ul>
           ${item.features.map((f) => `<li><i class="bi bi-check2"></i>${f}</li>`).join("")}
+        </ul>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderTattooPricingGrid() {
+  const container = document.getElementById("tattooPricingGrid");
+  container.innerHTML = APP_DATA.tattooPricingGroups.map((group) => `
+    <div class="col-md-6">
+      <div class="pricing-card">
+        <h5 class="mb-3">${group.name}</h5>
+        <ul class="tattoo-price-list">
+          ${group.styles.map((style) => `
+            <li><span>${style.name.replace(" — custom quote", "")}</span>
+              <strong>${style.price === null ? "Custom quote" : `from ${formatCurrency(style.price)}`}</strong>
+            </li>
+          `).join("")}
         </ul>
       </div>
     </div>
@@ -347,11 +377,23 @@ function populateTimeSlots() {
 // Populates the "Service / Style" dropdown based on chosen category (tattoo/piercing)
 function populateServiceOptions(category) {
   const select = document.getElementById("serviceSelect");
-  const list = category === "tattoo" ? APP_DATA.tattooStyles : APP_DATA.piercingOptions;
-
   select.disabled = false;
-  select.innerHTML = `<option value="" selected disabled>Select a service…</option>` +
-    list.map((s) => `<option value="${s.id}">${s.name} — ${formatCurrency(s.price)}</option>`).join("");
+  select.innerHTML = `<option value="" selected disabled>Choose style or piercing…</option>`;
+
+  if (category === "tattoo") {
+    APP_DATA.tattooPricingGroups.forEach((group) => {
+      const options = group.styles.map((style) => {
+        const priceText = style.price === null ? "Custom quote" : `from ${formatCurrency(style.price)}`;
+        return `<option value="${style.id}">${style.name} — ${priceText}</option>`;
+      }).join("");
+      select.insertAdjacentHTML("beforeend", `<optgroup label="${group.name}">${options}</optgroup>`);
+    });
+  } else {
+    const options = APP_DATA.piercingOptions.map((style) =>
+      `<option value="${style.id}">${style.name} — ${formatCurrency(style.price)}</option>`
+    ).join("");
+    select.insertAdjacentHTML("beforeend", options);
+  }
 }
 
 function updateTotals() {
@@ -377,6 +419,7 @@ function setCheckoutMode(mode) {
 
   document.getElementById("serviceArtistCard").classList.toggle("d-none", !isBooking);
   document.getElementById("dobFieldCol").classList.toggle("d-none", !isBooking);
+  document.getElementById("customQuoteField").classList.toggle("d-none", !isBooking || !selectedServiceId.startsWith("tattoo-"));
   document.getElementById("serviceSummaryRow").classList.toggle("d-none", !isBooking);
   document.getElementById("servicePriceRow").classList.toggle("d-none", !isBooking);
   document.getElementById("depositRow").classList.toggle("d-none", !isBooking);
@@ -388,15 +431,24 @@ function setCheckoutMode(mode) {
   });
 
   document.getElementById("paymentCardTitle").textContent = isBooking
-    ? "Secure Payment — Deposit Due Today"
-    : "Secure Payment — Total Due Today";
+    ? "Manual Payment — 50% Deposit Due Today"
+    : "Manual Payment — Total Due Today";
   document.getElementById("submitBtnText").textContent = isBooking
-    ? "Confirm Booking & Pay Deposit"
-    : "Confirm Product Order & Pay";
+    ? "Continue to Manual Payment"
+    : "Continue to Product Payment";
+  document.getElementById("policyAgreeText").textContent = isBooking
+    ? "I agree to studio policies and understand my appointment is pending until the 50% deposit is received and verified."
+    : "I confirm my aftercare order details and understand fulfillment begins after payment is verified.";
 
   if (!isBooking) {
     selectedServicePrice = 0;
     selectedServiceLabel = "—";
+    selectedServiceId = "";
+    document.getElementById("serviceCategory").value = "";
+    document.getElementById("serviceSelect").innerHTML = `<option value="" selected disabled>Select a service first…</option>`;
+    document.getElementById("serviceSelect").disabled = true;
+    document.getElementById("customQuoteAmount").required = false;
+    document.getElementById("customQuoteAmount").value = "";
   }
 
   document.getElementById("shopOnlyEmptyCartWarning").classList.add("d-none");
@@ -451,34 +503,6 @@ function attachBookAppointmentCtaHandlers() {
 }
 
 /* ==========================================================================
-   FORM INPUT MASKING (Card Number / Expiry)
-   ========================================================================== */
-function attachCardMasking() {
-  const cardNumber = document.getElementById("cardNumber");
-  cardNumber.addEventListener("input", () => {
-    cardNumber.value = cardNumber.value
-      .replace(/\D/g, "")
-      .slice(0, 16)
-      .replace(/(.{4})/g, "$1 ")
-      .trim();
-  });
-
-  const expiry = document.getElementById("cardExpiry");
-  expiry.addEventListener("input", () => {
-    let value = expiry.value.replace(/\D/g, "").slice(0, 4);
-    if (value.length >= 3) {
-      value = `${value.slice(0, 2)}/${value.slice(2)}`;
-    }
-    expiry.value = value;
-  });
-
-  const cvv = document.getElementById("cardCvv");
-  cvv.addEventListener("input", () => {
-    cvv.value = cvv.value.replace(/\D/g, "").slice(0, 4);
-  });
-}
-
-/* ==========================================================================
    BOOKING FORM SUBMISSION & SUCCESS MODAL
    ========================================================================== */
 function attachBookingFormHandlers() {
@@ -490,15 +514,42 @@ function attachBookingFormHandlers() {
     populateServiceOptions(categorySelect.value);
     selectedServicePrice = 0;
     selectedServiceLabel = "—";
+    selectedServiceId = "";
+    document.getElementById("customQuoteField").classList.add("d-none");
+    document.getElementById("customQuoteAmount").required = false;
+    document.getElementById("customQuoteAmount").value = "";
     updateTotals();
   });
 
   serviceSelect.addEventListener("change", () => {
     const service = getServiceById(serviceSelect.value);
     if (service) {
-      selectedServicePrice = service.price;
-      selectedServiceLabel = `${service.name} (${formatCurrency(service.price)})`;
+      selectedServiceId = service.id;
+      const isTattoo = categorySelect.value === "tattoo";
+      const quoteField = document.getElementById("customQuoteField");
+      const quoteInput = document.getElementById("customQuoteAmount");
+      quoteField.classList.toggle("d-none", !isTattoo);
+      quoteInput.required = isTattoo;
+      quoteInput.min = service.price ?? 1;
+      quoteInput.value = service.price ?? "";
+
+      if (isTattoo) {
+        selectedServicePrice = Number(quoteInput.value) || 0;
+        selectedServiceLabel = service.name;
+      } else {
+        selectedServicePrice = service.price;
+        selectedServiceLabel = service.name;
+      }
     }
+    updateTotals();
+  });
+
+  document.getElementById("customQuoteAmount").addEventListener("input", (event) => {
+    const selectedStyle = getServiceById(serviceSelect.value);
+    selectedServicePrice = Number(event.target.value) || 0;
+    selectedServiceLabel = selectedStyle
+      ? `${selectedStyle.name} (${formatCurrency(selectedServicePrice)})`
+      : "—";
     updateTotals();
   });
 
@@ -522,56 +573,40 @@ function attachBookingFormHandlers() {
       return;
     }
 
-    showSuccessModal();
-    form.classList.remove("was-validated");
-    form.reset();
-
-    // Reset booking state after successful submission
-    selectedServicePrice = 0;
-    selectedServiceLabel = "—";
-    Object.keys(cart).forEach((key) => delete cart[key]);
-    serviceSelect.innerHTML = `<option value="" selected disabled>Select category first…</option>`;
-    serviceSelect.disabled = true;
-    setCheckoutMode("booking");
-    document.getElementById("modeBooking").checked = true;
-    renderCart();
+    continueToManualPayment();
   });
 }
 
-function showSuccessModal() {
-  const isBooking = checkoutMode === "booking";
-  const deposit = selectedServicePrice * APP_DATA.depositRate;
-  const productsSubtotal = getCartSubtotal();
-  const totalDueToday = deposit + productsSubtotal;
+function continueToManualPayment() {
+  const appointment = checkoutMode === "booking";
+  const productsTotal = getCartSubtotal();
+  const deposit = appointment ? selectedServicePrice * APP_DATA.depositRate : 0;
+  const order = {
+    type: appointment ? "appointment" : "aftercare",
+    client: {
+      name: document.getElementById("clientName").value.trim(),
+      email: document.getElementById("clientEmail").value.trim(),
+      phone: document.getElementById("clientPhone").value.trim()
+    },
+    booking: appointment ? {
+      service: document.getElementById("serviceCategory").selectedOptions[0].textContent,
+      style: selectedServiceLabel,
+      artist: document.getElementById("artistSelect").selectedOptions[0].textContent,
+      location: document.getElementById("locationType").selectedOptions[0].textContent,
+      date: document.getElementById("appointmentDate").value,
+      time: document.getElementById("appointmentTime").value,
+      notes: document.getElementById("designNotes").value.trim(),
+      serviceTotal: selectedServicePrice,
+      deposit
+    } : null,
+    products: getCartItems().map(({ id, name, price, qty }) => ({ id, name, price, qty })),
+    productsTotal,
+    totalDue: deposit + productsTotal,
+    currency: "USD"
+  };
 
-  const cartSummary = getCartItems().length
-    ? getCartItems().map((i) => `${i.name} x${i.qty}`).join(", ")
-    : "None";
-
-  document.getElementById("modalHeading").textContent = isBooking
-    ? "Booking & Pre-Order Confirmed!"
-    : "Aftercare Order Confirmed!";
-
-  ["modalServiceRow", "modalArtistRow", "modalDateTimeRow", "modalLocationRow"].forEach((id) =>
-    document.getElementById(id).classList.toggle("d-none", !isBooking)
-  );
-
-  document.getElementById("modalClientName").textContent = document.getElementById("clientName").value || "—";
-  document.getElementById("modalCartItems").textContent = cartSummary;
-  document.getElementById("modalTotalPaid").textContent = formatCurrency(totalDueToday);
-
-  if (isBooking) {
-    document.getElementById("modalServiceName").textContent = selectedServiceLabel;
-    document.getElementById("modalArtistName").textContent =
-      document.getElementById("artistSelect").selectedOptions[0]?.textContent || "—";
-    document.getElementById("modalDateTime").textContent =
-      `${document.getElementById("appointmentDate").value} at ${document.getElementById("appointmentTime").value}`;
-    document.getElementById("modalLocation").textContent =
-      document.getElementById("locationType").selectedOptions[0]?.textContent || "—";
-  }
-
-  const modal = new bootstrap.Modal(document.getElementById("successModal"));
-  modal.show();
+  sessionStorage.setItem("royalInkPendingCheckout", JSON.stringify(order));
+  window.location.href = "payment.html";
 }
 
 /* ==========================================================================
@@ -590,12 +625,11 @@ function setFooterYear() {
    INITIALIZATION
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-  renderPricingGrid("tattooPricingGrid", APP_DATA.tattooStyles);
+  renderTattooPricingGrid();
   renderPricingGrid("piercingPricingGrid", APP_DATA.piercingOptions);
   renderShopGrid();
   populateArtists();
   populateTimeSlots();
-  attachCardMasking();
   attachBookingFormHandlers();
   attachProceedToCheckoutHandler();
   attachBookAppointmentCtaHandlers();
