@@ -3,6 +3,8 @@ const paymentForm = document.getElementById("paymentEvidenceForm");
 const paymentOrderSummary = document.getElementById("orderSummary");
 const paymentError = document.getElementById("paymentFormError");
 const paymentOrder = readPendingOrder();
+const isGitHubPages = window.location.hostname === "github.io"
+  || window.location.hostname.endsWith(".github.io");
 const cryptoWallets = {
   BTC: {
     network: "Bitcoin network",
@@ -168,9 +170,19 @@ paymentForm.addEventListener("submit", (event) => {
   }
 
   setPaymentMethod();
+  if (isGitHubPages) {
+    event.preventDefault();
+    window.location.href = "payment-success.html?submission=unconfigured";
+    return;
+  }
+
   document.getElementById("submitEvidenceButton").disabled = true;
   document.getElementById("submitEvidenceButton").innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Submitting…';
 });
 
 renderPaymentOrder(paymentOrder);
 setPaymentMethod();
+
+if (isGitHubPages) {
+  document.getElementById("staticHostNotice").classList.remove("d-none");
+}
