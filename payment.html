@@ -25,7 +25,7 @@
       <section class="manual-payment-content studio-card p-4 p-md-5">
         <p class="text-accent text-uppercase small fw-semibold mb-2">Manual checkout</p>
         <h1 class="h2 mb-2">Complete your payment</h1>
-        <p class="text-light">Choose bank transfer or cryptocurrency, send the amount shown, then submit your transaction reference for manual review. We do not process card payments on this site.</p>
+        <p class="text-light">Choose bank transfer or cryptocurrency, send the exact amount shown, and submit your transaction reference and matching receipt. Our team will review your payment and follow up using your preferred contact method.</p>
 
         <div id="orderSummary" class="payment-order-summary mb-4" aria-live="polite">
           <p class="mb-0">Loading your order…</p>
@@ -110,7 +110,7 @@
             <div class="col-12">
               <label for="paymentReceipt" class="form-label">Payment receipt or screenshot</label>
               <input class="form-control studio-input" id="paymentReceipt" name="payment-receipt" type="file" accept="image/*,.pdf" required>
-              <div class="form-text">Upload only evidence needed to verify this transfer. Hide full card numbers, passwords, and security codes.</div>
+              <div class="form-text">Upload a receipt that matches this transfer. For your security, hide full card numbers, passwords, and security codes.</div>
               <div class="invalid-feedback">Upload a receipt or screenshot.</div>
             </div>
             <div class="col-12">
@@ -128,17 +128,16 @@
 
           <div class="form-check my-4">
             <input class="form-check-input" type="checkbox" value="yes" id="paymentConfirmation" name="payment-sent" required>
-            <label class="form-check-label text-light" for="paymentConfirmation">I have sent the displayed amount and understand this submission is for manual review only.</label>
+            <label class="form-check-label text-light" for="paymentConfirmation">I confirm that I have sent the exact amount shown above and that the payment details and receipt are accurate. I understand my appointment is validated after the deposit and payment evidence are verified.</label>
             <div class="invalid-feedback">Confirm that you have sent the payment before submitting evidence.</div>
           </div>
           <div id="paymentFormError" class="alert alert-warning d-none" role="alert"></div>
-          <div id="staticHostNotice" class="alert alert-warning mt-3 mb-0 d-none" role="status">GitHub Pages cannot receive form submissions. The form will show a notice instead of sending your details until a form service is configured.</div>
           <button type="submit" class="btn btn-accent btn-lg w-100" id="submitEvidenceButton">
             <i class="bi bi-cloud-arrow-up me-2"></i>Submit payment evidence
           </button>
         </form>
 
-        <p class="payment-review-note mt-4 mb-0"><i class="bi bi-info-circle text-accent me-1"></i>Submitting evidence does not confirm payment or reserve an appointment. After manual verification, the studio will contact you using your preferred confirmation method.</p>
+        <p class="payment-review-note mt-4 mb-0"><i class="bi bi-info-circle text-accent me-1"></i>Once your payment is verified, your appointment booking will be validated. Please submit accurate payment details and evidence so we can complete your review promptly.</p>
       </section>
 
       <footer class="payment-page-footer text-center text-light small py-4">
